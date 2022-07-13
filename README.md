@@ -1,6 +1,11 @@
 # Leaflet Citibike Map  
 
-**Overview:** ``` Included in this repository are seven different versions of a Leaflet map using the same Citibike api information.  ```  
+Author:  Erin James Wills, ejw.data@gmail.com  
+
+>Note:  This activity was originally part of a data science bootcamp but I modified much of the content and added to this repo.
+
+
+**Overview:** ``` Included in this repository are seven different versions of a Leaflet map using the same Citibike api information.  The first six version can be found inside folders and the seventh version is located in the root directory.  ```  
 
 ## Outcomes  
 
@@ -21,7 +26,7 @@ Here is a map with all the markers added.
 *  Folder 03 is very similar to the existing basic version found in the class repo but with the code written without functions.
 *  Folder 04 is a modified version of the Advanced class activity that is more linear (does not use functions) and can be a bit easier to follow.
 *  Folder 05, 06 are refactored versions of Folder 04.
-*  Folder 07 is my preferred method of writing it since it does a couple things:  
+*  Folder 07 was removed and content was placed in the root directory.  The files located in the root is my preferred method of writing it since it does a couple things:  
    *  It merges the 2 API datasources without assuming that each list is ordered by id's identically.  My code can have the objects in random order and it will still merge the content.  
    *  I have structured the code to be largely broken into sections like 1) Map Setup (no data needed), 2) Legend Setup (data needed), 3) Creating and Adding Markers (data needed).  
    *  Each section and function typically only serves one purpose
