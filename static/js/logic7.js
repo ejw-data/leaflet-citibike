@@ -98,19 +98,20 @@ function createLegend(){
       // Initialize stationStatusCode, which will be used as a key to access the appropriate layers, icons, and station count for the layer group.
       let stationStatusCode;
 
-      // add json key, value pairs from arrays that have matching legacy_id's.  Order does not matter.
-      const uniqueObjects = new Map();
-      stationInfo.forEach(item => uniqueObjects.set(item.legacy_id, item));
-      stationStatus.forEach(item => uniqueObjects.set(item.legacy_id, {...uniqueObjects.get(item.legacy_id), ...item}));
-      const mergedArrays = Array.from(uniqueObjects.values());
+      //  // the below code was used to remove any duplicates but the API has changed so it needs modified to work again.
+      // // add json key, value pairs from arrays that have matching legacy_id's.  Order does not matter.
+      // const uniqueObjects = new Map();
+      // stationInfo.forEach(item => uniqueObjects.set(item.legacy_id, item));
+      // stationStatus.forEach(item => uniqueObjects.set(item.legacy_id, {...uniqueObjects.get(item.legacy_id), ...item}));
+      // const mergedArrays = Array.from(uniqueObjects.values());  
 
 
       // Loop through the stations (they're the same size and have partially matching data).
-      for (let i = 0; i < mergedArrays.length; i++) {
+      for (let i = 0; i < stationInfo.length; i++) {
 
         // Create a new station object with properties of both station objects.
         // Object.assign() combines objects; for duplicates the object to the right is retained.
-        let station = mergedArrays[i]
+        let station = Object.assign({}, stationInfo[i], stationStatus[i]);
 
         // If a station is listed but not installed, it's coming soon.
         if (!station.is_installed) {
@@ -161,6 +162,8 @@ function createLegend(){
 
 // addes one-item (station) at a time to the layer function
 function markerLayers(stationStatusCode, station){
+
+  console.log(station.lat, station.lon)
 
   let newMarker = L.marker([station.lat, station.lon], {
     icon: markerLayerIcon(stationStatusCode)
